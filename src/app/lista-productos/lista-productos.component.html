@@ -1,0 +1,40 @@
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th [width]="110">Compra</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of productos" [ngClass]="{'oferta': producto.oferta}">
+            <td><img [src]="producto.imagen" [alt]="producto.nombre"></td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.marca}}</td>
+            <td>{{producto.precio | currency}}</td>
+            <td><span class="badge badge-warning" *ngIf="producto.stock == 0">SIN STOCK</span></td>
+            <div class="input-group" *ngIf="producto.stock">
+              <td>
+                <div class="input-group">
+                  <div class="input-group-append">
+                    <button class="btn btn-sm active" (click)="decrementar(producto)">-</button>
+                  </div>
+                  <input
+                    type="number"
+                    [(ngModel)]="producto.cantidad"
+                    class="form-control">
+                  <div class="input-group-append">
+                    <button class="btn btn-sm active" (click)="incrementar(producto)">+</button>
+                  </div>
+                </div>
+              </td>
+            </div>
+
+        </tr>
+    </tbody>
+</table>
