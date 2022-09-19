@@ -8,6 +8,7 @@ import { CarritoComprasComponent } from './carrito-compras/carrito-compras.compo
 import { FormsModule } from '@angular/forms';
 import { TiendaAboutComponent } from './tienda-about/tienda-about.component';
 import { TiendaProductosComponent } from './tienda-productos/tienda-productos.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TiendaProductosComponent } from './tienda-productos/tienda-productos.co
     CarritoComprasComponent,
     TiendaAboutComponent,
     TiendaProductosComponent,
+    InputIntegerComponent
   ],
   imports: [
     BrowserModule,
