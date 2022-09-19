@@ -56,15 +56,7 @@ export class ListaProductosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  decrementar(producto: Producto): void {
-    if(producto.cantidad > 0){
-      producto.cantidad--;
-    }
-  }
-
-  incrementar(producto: Producto): void {
-    if(producto.cantidad < producto.stock){
-      producto.cantidad++;
-    }
+  maxAlcanzado(m: string){
+    alert(m)
   }
 }

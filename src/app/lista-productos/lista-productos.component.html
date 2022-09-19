@@ -18,23 +18,9 @@
             <td>{{producto.marca}}</td>
             <td>{{producto.precio | currency}}</td>
             <td><span class="badge badge-warning" *ngIf="producto.stock == 0">SIN STOCK</span></td>
-            <div class="input-group" *ngIf="producto.stock">
-              <td>
-                <div class="input-group">
-                  <div class="input-group-append">
-                    <button class="btn btn-sm active" (click)="decrementar(producto)">-</button>
-                  </div>
-                  <input
-                    type="number"
-                    [(ngModel)]="producto.cantidad"
-                    class="form-control">
-                  <div class="input-group-append">
-                    <button class="btn btn-sm active" (click)="incrementar(producto)">+</button>
-                  </div>
-                </div>
-              </td>
-            </div>
-
+            <td>
+              <app-input-integer (maxAlcanzado)="maxAlcanzado($event)" [max]="producto.stock" [(cantidad)]="producto.cantidad" *ngIf="producto.stock"></app-input-integer>
+            </td>
         </tr>
     </tbody>
 </table>
