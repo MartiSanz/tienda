@@ -50,7 +50,6 @@ export class InputIntegerComponent implements OnInit {
     if(isNaN(Number(event.key))){
       this.esNumero = false;
       this.error = false;
-      //bloquear comprar
     }
     else  {
       this.esNumero = true;

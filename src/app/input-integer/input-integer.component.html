@@ -5,11 +5,11 @@
   <input id="input"
     type="text"
     [(ngModel)]="cantidad"
-
     (keyup)="changeCantidad($event)">
   <div id="btn-incrementar" class="input-group-append">
     <button class="btn btn-sm active" (click)="incrementar()">+</button>
   </div>
-  <span *ngIf="!esNumero"> Ingrese un valor númerico</span>
-  <span *ngIf="error"> Ingrese un valor entre 0 y {{max}}</span>
 </div>
+
+<span *ngIf="!esNumero"> Ingrese un valor númerico</span>
+<span *ngIf="error"> Ingrese un valor entre 0 y {{max}}</span>

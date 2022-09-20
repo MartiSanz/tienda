@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarritoComprasService } from '../carrito-compras.service';
+import { CarritoService } from '../carrito.service';
 import { Producto } from './Producto';
 
 @Component({
@@ -52,10 +52,8 @@ export class ListaProductosComponent implements OnInit {
     }
   ]
 
-  carrito: CarritoComprasService;
+  constructor(private carrito: CarritoService) {
 
-  constructor() {
-    this.carrito = new CarritoComprasService();
   }
 
   ngOnInit(): void {
@@ -66,6 +64,10 @@ export class ListaProductosComponent implements OnInit {
   }
 
   agregarAlCarrito(producto: Producto){
-    this.carrito.agregarAlCarrito(producto);
+    if(producto.cantidad > 0){
+      this.carrito.agregarAlCarrito(producto);
+      producto.stock -= producto.cantidad;
+      producto.cantidad = 0;
+    }
   }
 }

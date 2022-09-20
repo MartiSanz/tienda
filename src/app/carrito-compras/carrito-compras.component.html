@@ -1,1 +1,8 @@
-<p>carrito-compras works!</p>
+<div class="card">
+  <h3 class="card-header titulo-carrito">Carrito de compras</h3>
+</div>
+<ul class="list-group">
+  <li class="list-group-item lista" *ngFor="let producto of (listaDeCompras$ | async)">
+    {{producto.nombre}} {{producto.marca}} : {{producto.cantidad}}
+  </li>
+</ul>
