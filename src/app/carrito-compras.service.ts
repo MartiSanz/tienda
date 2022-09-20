@@ -6,9 +6,11 @@ import { Producto } from './lista-productos/Producto';
 })
 export class CarritoComprasService {
 
+  listaDeCompras: Producto[] = [];
+
   constructor() { }
 
   agregarAlCarrito(producto: Producto) {
-    throw new Error('Method not implemented.');
+    this.listaDeCompras.push(producto);
   }
 }

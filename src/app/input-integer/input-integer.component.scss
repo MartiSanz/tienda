@@ -1,4 +1,23 @@
-span{
-  color: red;
-  font-size: 10px;
+#btn-decrementar{
+  grid-area: btnDecrementar;
+  font-size: 0.3rem;
+}
+
+#btn-incrementar{
+  grid-area: btnIncrementar;
+  font-size: 0.3rem;
+}
+
+#input{
+  grid-area: input;
+  width: 30px;
+  border: 1px solid transparent;
+  text-align: center;
+}
+
+#compra{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+  "btnDecrementar input btnIncrementar";
 }

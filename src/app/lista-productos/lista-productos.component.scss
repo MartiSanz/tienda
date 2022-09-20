@@ -1,6 +1,5 @@
 img{
-    height: 60%;
-    width: 60%;
+  max-width: 6rem;
 }
 
 .oferta{
@@ -12,8 +11,5 @@ button{
   background-color: #929da8;
   border-color: #797d81;
   color: #fff;
-}
-
-input{
-  max-width: 40px;
+  font-size: .6rem !important;
 }

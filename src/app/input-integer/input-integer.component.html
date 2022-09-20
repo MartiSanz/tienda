@@ -1,13 +1,13 @@
-<div class="input-group">
-  <div class="input-group-append">
+<div id="compra" class="input-group">
+  <div id="btn-decrementar" class="input-group-append">
     <button class="btn btn-sm active" (click)="decrementar()">-</button>
   </div>
-  <input
+  <input id="input"
     type="text"
     [(ngModel)]="cantidad"
-    class="form-control"
+
     (keyup)="changeCantidad($event)">
-  <div class="input-group-append">
+  <div id="btn-incrementar" class="input-group-append">
     <button class="btn btn-sm active" (click)="incrementar()">+</button>
   </div>
   <span *ngIf="!esNumero"> Ingrese un valor númerico</span>
