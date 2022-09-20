@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarritoComprasService } from '../carrito-compras.service';
 import { Producto } from './Producto';
 
 @Component({
@@ -51,12 +52,20 @@ export class ListaProductosComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  carrito: CarritoComprasService;
+
+  constructor() {
+    this.carrito = new CarritoComprasService();
+  }
 
   ngOnInit(): void {
   }
 
   maxAlcanzado(m: string){
     alert(m)
+  }
+
+  agregarAlCarrito(producto: Producto){
+    this.carrito.agregarAlCarrito(producto);
   }
 }
