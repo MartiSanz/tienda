@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { TiendaAboutComponent } from './tienda-about/tienda-about.component';
 import { TiendaProductosComponent } from './tienda-productos/tienda-productos.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InputIntegerComponent } from './input-integer/input-integer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
