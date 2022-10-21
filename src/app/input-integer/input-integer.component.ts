@@ -56,6 +56,10 @@ export class InputIntegerComponent implements OnInit {
       if(Number(event.key) > this.max){
         this.error = true;
       }
+      else{
+        this.cantidad = Number(event.key);
+        this.cantidadChange.emit(this.cantidad);
+      }
     }
 
 

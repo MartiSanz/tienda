@@ -10,49 +10,8 @@ import { Producto } from './Producto';
 })
 export class ListaProductosComponent implements OnInit {
 
-  /*productos: Producto[] = [
-    {
-      nombre: 'Remera',
-      categoria: 'Deportivo',
-      marca:'Adidas',
-      precio: 1000,
-      stock: 5,
-      imagen:'assets/img/remera-adidas.jpg',
-      oferta: false,
-      cantidad: 0,
-    },
-    {
-      nombre: 'Buzo',
-      categoria: 'Deportivo',
-      marca:'Nike',
-      precio: 5000,
-      stock: 1,
-      imagen:'assets/img/buzo-nike.jpg',
-      oferta: true,
-      cantidad: 0,
-    },
-    {
-      nombre: 'Zapatillas',
-      categoria: 'Urbano',
-      marca:'Puma',
-      precio: 10000,
-      stock: 4,
-      imagen:'assets/img/zapatillas-puma.jpg',
-      oferta: false,
-      cantidad: 0,
-    },
-    {
-      nombre: 'Campera',
-      categoria: 'Urbano',
-      marca:'Nike',
-      precio: 5000,
-      stock: 0,
-      imagen:'assets/img/campera-nike.jpg',
-      oferta: false,
-      cantidad: 0,
-    }
-  ]*/
   productos: Producto[] = [];
+  carritoDeCompras: Producto[] = [];
 
   constructor(
     private carrito: CarritoService,
@@ -61,8 +20,20 @@ export class ListaProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.carritoDeCompras = this.carrito.getCarrito();
+
     this.productosService.getAll()
-    .subscribe(data => this.productos = data);
+      .subscribe(data => {
+
+        this.productos = data;
+
+        for (let i = 0; i < this.productos.length; i++) {
+          let cantidad = this.buscarCantidadProductoCarrito(this.productos[i]);
+          this.productos[i].stock = this.productos[i].stock - cantidad;
+        }
+
+      });
+
   }
 
   maxAlcanzado(m: string){
@@ -70,10 +41,22 @@ export class ListaProductosComponent implements OnInit {
   }
 
   agregarAlCarrito(producto: Producto){
-    if(producto.cantidad > 0){
+    if(producto.cantidad > 0 && producto.stock > 0 && producto.cantidad <= producto.stock ){
       this.carrito.agregarAlCarrito(producto);
       producto.stock -= producto.cantidad;
       producto.cantidad = 0;
     }
   }
+
+  buscarCantidadProductoCarrito(producto: Producto): number{
+    for (let i = 0; i < this.carritoDeCompras.length; i++) {
+      if(producto.nombre == this.carritoDeCompras[i].nombre){
+        return this.carritoDeCompras[i].cantidad;
+      }
+    }
+    return 0;
+  }
 }
+
+
+

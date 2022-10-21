@@ -20,7 +20,10 @@ export class CarritoService {
     else{
       item.cantidad += producto.cantidad;
     }
-    console.log(this._listaDeCompras)
     this.listaDeCompras.next(this._listaDeCompras); // equivalente al emmit de eventos
+  }
+
+  getCarrito(){
+    return this._listaDeCompras;
   }
 }

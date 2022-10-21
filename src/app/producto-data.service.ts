@@ -12,6 +12,7 @@ export class ProductoDataService {
 
   constructor(private http: HttpClient) { }
 
+  /* Consume la API y devuelve un observable a la respuesta */
   public getAll(): Observable<Producto[]>{
 
     return this.http.get<Producto[]>(URL)
