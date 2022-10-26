@@ -5,7 +5,7 @@
   <input id="input"
     type="text"
     [(ngModel)]="cantidad"
-    (keyup)="changeCantidad($event)">
+    (change)="changeCantidad()">
   <div id="btn-incrementar" class="input-group-append">
     <button class="btn btn-sm active" (click)="incrementar()">+</button>
   </div>

@@ -31,6 +31,8 @@ export class InputIntegerComponent implements OnInit {
   decrementar(): void {
     if(this.cantidad > 0){
       this.cantidad--;
+      this.error = false;
+      this.esNumero = true;
       this.cantidadChange.emit(this.cantidad);
     }
   }
@@ -38,6 +40,8 @@ export class InputIntegerComponent implements OnInit {
   incrementar(): void {
     if(this.cantidad < this.max){
       this.cantidad++;
+      this.error = false;
+      this.esNumero = true;
       this.cantidadChange.emit(this.cantidad);
     }
     else{
@@ -45,24 +49,24 @@ export class InputIntegerComponent implements OnInit {
     }
   }
 
-  changeCantidad(event: KeyboardEvent){
+  changeCantidad(){
 
-    if(isNaN(Number(event.key))){
+    if(isNaN(Number(this.cantidad))){
       this.esNumero = false;
       this.error = false;
+      this.cantidad = 0;
+      this.cantidadChange.emit(this.cantidad);
     }
-    else  {
+    else{
       this.esNumero = true;
-      if(Number(event.key) > this.max){
+      if(Number(this.cantidad) > this.max){
         this.error = true;
       }
       else{
-        this.cantidad = Number(event.key);
+        this.cantidad = Number(this.cantidad);
         this.cantidadChange.emit(this.cantidad);
       }
     }
-
-
   }
 
 }
